@@ -35,6 +35,15 @@ Moddalarni aniq raqamlar bilan ko‘rsating.
 Agar savol noaniq bo‘lsa yoki huquqiy masalaga taalluqli bo‘lmasa, foydalanuvchini advokatga murojaat qilishga undang.
 """
 
+# Start handler
+@dp.message(F.text.startswith("/start"))
+async def start_handler(message: Message):
+    await message.answer(
+        "Assalomu alaykum! 🤖\n\n"
+        "Men sizga O‘zbekiston Respublikasi qonunchiligi bo‘yicha huquqiy masalalarda yordam bera oladigan virtual yordamchiman. "
+        "Savolingizni yozing va qonunlar asosida javob oling."
+    )
+
 # Huquqiy savolni aniqlovchi funksiya
 async def is_legal_question(question: str) -> bool:
     response = openai.ChatCompletion.create(
